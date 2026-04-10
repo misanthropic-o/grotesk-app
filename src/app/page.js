@@ -1,5 +1,5 @@
-import HeroSection from './mainPage/heroSection';
+import MainPage from './mainPage';
 
 export default function Home() {
-  return <HeroSection />;
+  return <MainPage />;
 }

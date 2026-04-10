@@ -42,7 +42,7 @@ export default function HeroSection() {
         ...prev,
         currentIndex: (prev.currentIndex + 1) % prev.images.length,
       }));
-    }, 6000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -53,9 +53,7 @@ export default function HeroSection() {
         {state.images.map((src, index) => (
           <div
             key={src}
-            className={`slide ${
-              index === state.currentIndex ? "active" : ""
-            }`}
+            className={`slide ${index === state.currentIndex ? "active" : ""}`}
           >
             <Image
               src={src}

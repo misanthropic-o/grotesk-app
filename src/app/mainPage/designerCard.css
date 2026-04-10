@@ -1,0 +1,8 @@
+.designerCard {
+  width: calc(100% / 3);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #101010;
+  background-image: url(../../../public/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.gif);
+}
