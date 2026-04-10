@@ -20,6 +20,7 @@
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 10;
+  transition: all 0.3s ease;
 }
 
 .heroHeader.sticky {
@@ -27,6 +28,7 @@
   top: 0;
   left: 0;
   z-index: 9999;
+  transform: translateY(0);
 }
 
 .imageContainer {

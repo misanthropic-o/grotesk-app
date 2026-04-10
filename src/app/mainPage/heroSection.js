@@ -37,23 +37,26 @@ export default function HeroSection() {
   }, []);
 
   const handleScroll = () => {
-    console.log("SCROLL FIRED");
     const header = headerRef.current;
     if (!header) return;
     
-    const rect = header.getBoundingClientRect();
-    const shouldBeSticky = rect.top <= 0;
-    setIsSticky(shouldBeSticky);
+    const headerRect = header.getBoundingClientRect();
+    const shouldBeSticky = headerRect.top <= 0;
+    
+    if (isSticky && headerRect.top >= 0) {
+      setIsSticky(false);
+    } else if (!isSticky && headerRect.top <= 0) {
+      setIsSticky(true);
+    }
   };
 
   useEffect(() => {
-    console.log("ADDING SCROLL LISTENER");
     window.addEventListener("scroll", handleScroll, { passive: true, capture: true });
     
     return () => {
       window.removeEventListener("scroll", handleScroll, { capture: true });
     };
-  }, []);
+  }, [isSticky]);
 
   return (
     <section className="hero">
