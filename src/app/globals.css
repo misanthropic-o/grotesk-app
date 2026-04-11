@@ -13,3 +13,21 @@ body {
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #101010;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
