@@ -2,7 +2,15 @@
   width: 100%;
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+}
+
+.header-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .heroHeader {
@@ -20,22 +28,26 @@
   text-transform: uppercase;
   padding: 0 32px;
   box-sizing: border-box;
-  z-index: 10;
-  transition: all 0.3s ease;
+  z-index: 1000;
+  background-color: rgba(16, 16, 16, 0.75);
+  transition: none;
+}
+
+.heroHeader nav {
+  position: relative;
+  z-index: 11;
+}
+
+.heroHeader a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .heroHeader.sticky {
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 9999;
-  transform: translateY(0);
-  transition: transform 0.3s ease;
-}
-
-.heroHeader.unstick {
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
+  bottom: auto;
+  transition: none;
 }
 
 .imageContainer {

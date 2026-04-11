@@ -1,7 +1,7 @@
 header {
   width: 100%;
   height: 35px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(16, 16, 16, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,4 +16,43 @@ nav {
   align-items: center;
   font-size: 0.75rem;
   font-weight: 300;
+}
+
+.header-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav1left {
+  display: flex;
+  gap: 21px;
+}
+
+.header-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.header-left a {
+  cursor: pointer;
+}
+
+.border-nav {
+  width: 1px;
+  height: 18px;
+  background-color: white;
+  display: block;
+}
+
+.icon-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5px;
+  gap: 0.75rem;
 }
