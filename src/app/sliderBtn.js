@@ -1,6 +1,6 @@
 import "./sliderBtn.css";
 
-export default function sliderBtn() {
+export default function SliderBtn() {
   return (
     <div className="sliderBtn">
       <svg

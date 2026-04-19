@@ -1,0 +1,74 @@
+.mainPageSliderContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mainPageSliderViewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mainPageSliderTrack {
+  display: flex;
+  height: 100%;
+}
+
+.card {
+  flex: 0 0 auto;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardInfo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+  z-index: 5;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.cardSubtitle {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.sliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.sliderBtnLeft {
+  left: 20px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.sliderBtnRight {
+  right: 20px;
+}

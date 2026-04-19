@@ -1,0 +1,9 @@
+.sliderBtnMain {
+  width: 185px;
+  height: 58px;
+  border: 1px solid white;
+  font-weight: 200;
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+}

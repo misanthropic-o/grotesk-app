@@ -46,19 +46,19 @@ export default function DesignerSection() {
       <button className="sliderBtn sliderBtnLeft" onClick={prevSlide}>
         <SliderBtn />
       </button>
-      
+
       <div className="sliderContainer">
-        <div 
+        <div
           className="sliderTrack"
           style={{
             transform: `translateX(-${index * cardWidth}%)`,
-            transition: "transform 0.4s ease"
+            transition: "transform 0.4s ease",
           }}
         >
           {LOOPED_CARDS.map((img, i) => (
-            <DesignerCard 
+            <DesignerCard
               key={i}
-              id={`designerCard${i}`} 
+              id={`designerCard${i}`}
               imgSrc={img}
               isHovered={hoveredId === `designerCard${i}`}
               isAnyHovered={hoveredId !== null}
@@ -68,7 +68,7 @@ export default function DesignerSection() {
           ))}
         </div>
       </div>
-      
+
       <button className="sliderBtn sliderBtnRight" onClick={nextSlide}>
         <SliderBtn />
       </button>
