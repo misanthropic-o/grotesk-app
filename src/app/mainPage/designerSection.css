@@ -1,5 +1,41 @@
 .designerSection {
   width: 100%;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.sliderContainer {
+  width: 900px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.sliderTrack {
   display: flex;
+}
+
+.designerCard {
+  min-width: 300px;
+  max-width: 300px;
+  width: 300px;
+}
+
+.sliderBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.sliderBtnLeft {
+  left: 20px;
+}
+
+.sliderBtnRight {
+  right: 20px;
+  transform: translateY(-50%) rotate(180deg);
 }
