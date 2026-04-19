@@ -36,6 +36,7 @@ export default function HeroSection({ heroImages = [] }) {
   });
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeBtn, setActiveBtn] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef(null);
   const isFirstRender = useRef(true);
   const isSticky = useRef(false);
@@ -136,7 +137,9 @@ export default function HeroSection({ heroImages = [] }) {
                   <div
                     className="header-btn"
                     onClick={() => {
-                      setActiveBtn(activeBtn === "menswear" ? null : "menswear");
+                      setActiveBtn(
+                        activeBtn === "menswear" ? null : "menswear",
+                      );
                       setMenuOpen(!menuOpen);
                     }}
                   >
@@ -158,7 +161,9 @@ export default function HeroSection({ heroImages = [] }) {
                   <div
                     className="header-btn"
                     onClick={() => {
-                      setActiveBtn(activeBtn === "womenswear" ? null : "womenswear");
+                      setActiveBtn(
+                        activeBtn === "womenswear" ? null : "womenswear",
+                      );
                       setMenuOpen(!menuOpen);
                     }}
                   >
@@ -179,30 +184,16 @@ export default function HeroSection({ heroImages = [] }) {
                   </div>
                   <div
                     className="header-btn"
-                    onClick={() => {
-                      setActiveBtn(activeBtn === "sneakers" ? null : "sneakers");
-                      setMenuOpen(!menuOpen);
-                    }}
+                    onClick={() => setActiveBtn("sneakers")}
                   >
                     <a>SNEAKERS</a>
-                    <svg
-                      className={`header-icn ${activeBtn === "sneakers" && menuOpen ? "flipped" : ""}`}
-                      width="7"
-                      height="6"
-                      viewBox="0 0 7 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.03113 5.25L3.95596e-05 -5.70966e-07L6.06222 -4.09935e-08L3.03113 5.25Z"
-                        fill="#EFEFEF"
-                      />
-                    </svg>
                   </div>
                   <div
                     className="header-btn"
                     onClick={() => {
-                      setActiveBtn(activeBtn === "designers" ? null : "designers");
+                      setActiveBtn(
+                        activeBtn === "designers" ? null : "designers",
+                      );
                       setMenuOpen(!menuOpen);
                     }}
                   >
@@ -226,24 +217,54 @@ export default function HeroSection({ heroImages = [] }) {
                 <a href="https://github.com/misanthropicinc">GITHUB</a>
               </div>
               <span className="border-nav"></span>
-              <div className="nav-btns">
-                <a href="#">
-                  <svg
-                    className="header-icn"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+              <div className={`nav-btns ${searchOpen ? "search-active" : ""}`}>
+                <div
+                  className={`search-bar-wrapper ${searchOpen ? "open" : ""}`}
+                >
+                  <a
+                    className="search-trigger"
+                    onClick={() => setSearchOpen(!searchOpen)}
                   >
-                    <path
-                      d="M7.83333 7.83333L11.5 11.5M4.77778 9.05556C2.41523 9.05556 0.5 7.14033 0.5 4.77778C0.5 2.41523 2.41523 0.5 4.77778 0.5C7.14033 0.5 9.05556 2.41523 9.05556 4.77778C9.05556 7.14033 7.14033 9.05556 4.77778 9.05556Z"
-                      stroke="white"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                    <svg
+                      className="header-icn search-trigger-icn"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.83333 7.83333L11.5 11.5M4.77778 9.05556C2.41523 9.05556 0.5 7.14033 0.5 4.77778C0.5 2.41523 2.41523 0.5 4.77778 0.5C7.14033 0.5 9.05556 2.41523 9.05556 4.77778C9.05556 7.14033 7.14033 9.05556 4.77778 9.05556Z"
+                        stroke="white"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                  <div className="search-bar">
+                    <svg
+                      className="searchIcn"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.83333 7.83333L11.5 11.5M4.77778 9.05556C2.41523 9.05556 0.5 7.14033 0.5 4.77778C0.5 2.41523 2.41523 0.5 4.77778 0.5C7.14033 0.5 9.05556 2.41523 9.05556 4.77778C9.05556 7.14033 7.14033 9.05556 4.77778 9.05556Z"
+                        fill="none"
+                        stroke="#101010"
+                        strokeWidth="1"
+                      />
+                    </svg>
+                    <span className="search-divider"></span>
+                    <input
+                      type="text"
+                      className="search-input"
+                      placeholder="SEARCH..."
                     />
-                  </svg>
-                </a>
+                  </div>
+                </div>
                 <a href="#">
                   <svg
                     className="header-icn"
@@ -300,7 +321,12 @@ export default function HeroSection({ heroImages = [] }) {
             </div>
           </nav>
           {menuOpen && (
-            <HeaderMenu isOpen={menuOpen} isSticky={state.isSticky} onClose={() => setMenuOpen(false)} />
+            <HeaderMenu
+              isOpen={menuOpen}
+              isSticky={state.isSticky}
+              onClose={() => setMenuOpen(false)}
+              category={activeBtn === "womenswear" ? "womenswear" : "menswear"}
+            />
           )}
         </header>
       </div>
