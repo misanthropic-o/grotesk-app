@@ -2,7 +2,7 @@
 
 import "./designerSection.css";
 import DesignerCard from "./designerCard";
-import SliderBtn from "../sliderBtn";
+import SliderBtn from "./sliderBtn";
 import { useState, useEffect } from "react";
 
 const CARDS_BASE = [

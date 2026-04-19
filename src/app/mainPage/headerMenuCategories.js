@@ -6,7 +6,9 @@ export default function HeaderMenuCategory({ title, items }) {
       <a className="menu-category-title">{title}</a>
       <div className="cat-btns">
         {items.map((item, i) => (
-          <a key={i} className="menu-category-btn">{item}</a>
+          <a key={i} className="menu-category-btn">
+            {item}
+          </a>
         ))}
       </div>
     </div>

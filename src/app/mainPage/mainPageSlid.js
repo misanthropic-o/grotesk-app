@@ -98,7 +98,7 @@ export default function MainPageSlider({ cards = CARDS }) {
                     {subtitleLines(card.subtitle).map((line, idx, arr) => (
                       <span key={idx}>
                         {line}
-                        {idx < arr.length - 1 ? <br /> : null}
+                        {idx < arr.length - 1 && <br />}
                       </span>
                     ))}
                   </p>

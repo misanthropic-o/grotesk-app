@@ -3,8 +3,8 @@
 import { useEffect, useRef, useReducer, useState } from "react";
 import Image from "next/image";
 import "./heroSection.css";
-import "../header.css";
-import HeaderMenu from "../headerMenu";
+import "./header.css";
+import HeaderMenu from "./headerMenu";
 import logoImg from "../../imgs/grotesk-header-logo.png";
 
 function shuffleImages(images) {
