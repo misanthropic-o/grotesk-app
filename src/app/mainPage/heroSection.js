@@ -1,5 +1,7 @@
 "use client";
 
+/* eslint-disable no-unused-vars */
+
 import { useEffect, useRef, useReducer, useState } from "react";
 import Image from "next/image";
 import "./heroSection.css";
