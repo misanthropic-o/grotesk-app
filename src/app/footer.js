@@ -7,12 +7,18 @@ export default function Footer() {
       <a className="grotesk-footer-logo">
         <Image
           src="/imgs/grotesk-footer-logo.png"
-          width={134}
-          height={36}
+          width={112}
+          height={26}
           alt="logo"
         />
       </a>
-      <div className="footer-left"></div>
+      <div className="footer-left">
+        <a href="#">CATALOG</a>
+        <a href="#">AUTH</a>
+        <a href="#">PROFILE</a>
+        <a href="#">ORDER</a>
+        <a href="#">ITEM PAGE</a>
+      </div>
     </footer>
   );
 }

@@ -17,6 +17,9 @@ export default function RecommendCategory() {
           unoptimized
         />
       </div>
+      <div className="recommendCatOverlay">
+        <p>CATEGORY</p>
+      </div>
     </div>
   );
 }
