@@ -1,13 +1,15 @@
-import Header from "../mainPage/Header";
+import SearchBar from "../SearchBar";
+import SearchBarComponent from "../SearchBarComponent";
+import "./page.css";
 
 export default function Catalog() {
   return (
     <>
-      <Header />
-      <div>
-        <h1>Catalog</h1>
-        {/* Catalog content goes here */}
-      </div>
+      <section className="catalog-seciton">
+        <div className="catalog-searchfilter">
+          <SearchBarComponent />
+        </div>
+      </section>
     </>
   );
 }

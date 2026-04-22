@@ -6,7 +6,7 @@ import SliderBtn from "./sliderBtn";
 import { useState, useEffect } from "react";
 
 const CARDS_BASE = [
-  "/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.mp4",
+  "/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.webm",
   "/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.mp4",
   "/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.mp4",
   "/imgs/designerGifs/maison-martin-margiela-matthias-brown-gif-by-traceloops-find.mp4",

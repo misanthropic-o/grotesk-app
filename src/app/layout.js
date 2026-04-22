@@ -2,10 +2,12 @@ import { gotham } from "@/fonts/gotham";
 import "./globals.css";
 import Footer from "./footer";
 
-export const metadata = {
+const metadata = {
   title: "GROTESK | OFFICIAL WEBSITE",
   description: "GROTESK | OFFICIAL WEBSITE",
 };
+
+export { metadata };
 
 export default function RootLayout({ children }) {
   return (

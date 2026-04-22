@@ -12,10 +12,10 @@ export default function MoneyOnTopOfMe() {
         <p>FEATURED CATEGORIES</p>
       </div>
       <div className="featuredCats">
-        <RecommendCategory />
-        <RecommendCategory />
-        <RecommendCategory />
-        <RecommendCategory />
+        <RecommendCategory index={0} />
+        <RecommendCategory index={1} />
+        <RecommendCategory index={2} />
+        <RecommendCategory index={3} />
       </div>
     </section>
   );

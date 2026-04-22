@@ -13,7 +13,8 @@ export default function Footer() {
         />
       </a>
       <div className="footer-left">
-        <a href="#">CATALOG</a>
+        <a href="/home">HOME</a>
+        <a href="/catalog">CATALOG</a>
         <a href="#">AUTH</a>
         <a href="#">PROFILE</a>
         <a href="#">ORDER</a>
