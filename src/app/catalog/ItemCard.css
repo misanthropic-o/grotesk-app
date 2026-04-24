@@ -16,4 +16,48 @@
   width: 100%;
   height: 101px;
   border: 1px solid #101010;
+  padding: 16px 20px;
+}
+
+.item-card-content-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-card-item-price {
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.item-card-item-title {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.item-card-brand-title {
+  font-size: 15px;
+  font-weight: 100;
+  color: #101010;
+  opacity: 0.6;
+}
+
+.item-card-content-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-card-content-bottom button {
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.item-card-content-bottom button span {
+  font-size: 16px;
+  font-weight: 200;
 }

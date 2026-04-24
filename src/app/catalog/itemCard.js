@@ -12,7 +12,14 @@ export default function ItemCard() {
           </div>
           <p className="item-card-item-price">$69420.00</p>
         </div>
-        <div className="item-card-content-bottom"></div>
+        <div className="item-card-content-bottom">
+          <button>
+            <span>+</span> ADD TO CART
+          </button>
+          <button>
+            ADD TO WISHLIST <span>+</span>
+          </button>
+        </div>
       </div>
     </div>
   );
