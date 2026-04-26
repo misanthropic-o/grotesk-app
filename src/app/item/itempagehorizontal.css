@@ -7,6 +7,12 @@
   height: 100vh;
 }
 
+.horizontal-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .horizontal-slider::-webkit-scrollbar {
   display: none;
 }

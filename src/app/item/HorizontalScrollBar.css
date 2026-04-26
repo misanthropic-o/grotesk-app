@@ -1,0 +1,13 @@
+.horizontal-scrollbar-track {
+  width: 579px;
+  height: 9px;
+  background-color: #101010;
+  position: relative;
+}
+
+.horizontal-scrollbar-thumb {
+  position: absolute;
+  height: 5px;
+  background-color: white;
+  top: 2px;
+}

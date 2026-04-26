@@ -1,0 +1,69 @@
+.button-panel-item-card-menu {
+  border: 1px solid #101010;
+  width: 100%;
+  height: 37px;
+  display: flex;
+}
+
+.buy-now-button-item-card {
+  height: 100%;
+  border: none;
+  background-color: #101010;
+  color: white;
+  font-weight: 200;
+  font-size: 1rem;
+  width: 180px;
+}
+
+.selector-shit {
+  display: flex;
+  width: 130px;
+  height: 100%;
+  border: 1px solid #101010;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.size-it {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.color-block {
+  width: 25px;
+  height: 25px;
+  border: 3px solid #c0c0c0;
+}
+
+.color-name {
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.size-color-selectors-item-card {
+  display: flex;
+}
+
+.counter-buttons-item-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 20px;
+  border: 1px solid black;
+}
+
+.btn-placeholder-item-card {
+  width: 100%;
+  height: 50%;
+  border: 1px solid #101010;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.remove-item-button svg {
+  transform: scaleY(-1);
+}

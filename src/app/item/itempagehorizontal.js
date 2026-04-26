@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import "./itempagehorizontal.css";
+import HorizontalScrollBar from "./HorizontalScrollBar";
 
 export default function ItemPageHorizontal() {
   const scrollRef = useRef(null);
@@ -20,22 +21,23 @@ export default function ItemPageHorizontal() {
   }, []);
 
   const images = [
-    "/imgs/hero/heroRick.png",
-    "/imgs/hero/heroRick2.png",
-    "/imgs/hero/heroRS.png",
-    "/imgs/hero/heroGivenchy.png",
-    "/imgs/hero/heroERD.png",
-    "/imgs/hero/heroCDG1.png",
-    "/imgs/hero/heroCDG2.png",
+    "imgs/ROslidertemplatehorizontal.png",
+    "imgs/ROslidertemplatehorizontal.png",
+    "imgs/ROslidertemplatehorizontal.png",
+    "imgs/ROslidertemplatehorizontal.png",
+    "imgs/ROslidertemplatehorizontal.png",
   ];
 
   return (
-    <div className="horizontal-slider" ref={scrollRef}>
-      {images.map((src, index) => (
-        <div key={index} className="horizontal-slide">
-          <img src={src} alt={`item-${index}`} />
-        </div>
-      ))}
+    <div className="horizontal-slider-wrapper">
+      <div className="horizontal-slider" ref={scrollRef}>
+        {images.map((src, index) => (
+          <div key={index} className="horizontal-slide">
+            <img src={src} alt={`item-${index}`} />
+          </div>
+        ))}
+      </div>
+      <HorizontalScrollBar scrollRef={scrollRef} />
     </div>
   );
 }

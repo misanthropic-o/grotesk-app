@@ -10,6 +10,20 @@
   width: 100%;
   height: 614px;
   border: 1px solid #101010;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.item-card-menu-wrapper {
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.item-card-menu-wrapper.open {
+  transform: translateY(0);
 }
 
 .item-card-info {
@@ -17,6 +31,9 @@
   height: 101px;
   border: 1px solid #101010;
   padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .item-card-content-top {

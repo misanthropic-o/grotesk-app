@@ -1,9 +1,20 @@
+"use client";
+
 import "./ItemCard.css";
+import ItemCardMenu from "./itemCardMenu";
+import { useState } from "react";
+import Link from "next/link";
 
 export default function ItemCard() {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div className="item-card-main">
-      <div className="item-card-img"></div>
+      <Link href="/item" className="item-card-img">
+        <div className={`item-card-menu-wrapper ${showMenu ? "open" : ""}`}>
+          <ItemCardMenu />
+        </div>
+      </Link>
       <div className="item-card-info">
         <div className="item-card-content-top">
           <div className="item-card-brand-text">
@@ -16,8 +27,8 @@ export default function ItemCard() {
           <button>
             <span>+</span> ADD TO CART
           </button>
-          <button>
-            ADD TO WISHLIST <span>+</span>
+          <button onClick={() => setShowMenu(!showMenu)}>
+            QUICK BUY <span>{showMenu ? "−" : "+"}</span>
           </button>
         </div>
       </div>
