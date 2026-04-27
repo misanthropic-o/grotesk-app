@@ -1,0 +1,57 @@
+.picmenu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.03s steps(1) forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.picmenu-content {
+  width: 1848px;
+  height: 855px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.95);
+  animation: scaleIn 0.03s steps(1) forwards;
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+.picmenu-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.picmenu-card {
+  height: 100%;
+  width: 551px;
+  border: 1px solid #101010;
+}
+
+.picmenu-card img {
+  width: 551px;
+  height: 100%;
+  object-fit: cover;
+}
