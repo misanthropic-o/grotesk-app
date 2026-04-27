@@ -2,26 +2,19 @@
 
 import { useEffect, useState, useRef } from "react";
 import "./PicMenu.css";
+import ImageSelector from "./ImageSelector";
 
-export default function PicMenu({ isOpen, onClose, items }) {
+export default function PicMenu({ isOpen, onClose, items, selectorImages, onSelectorClick }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [zoomStyle, setZoomStyle] = useState({});
+  const [zoomPos, setZoomPos] = useState({ left: 0, top: 0 });
   const cardRefs = useRef([]);
 
-  const [zoomPos, setZoomPos] = useState({ left: 0, top: 0 });
-
-  const defaultItems = [
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-  ];
-  const displayItems = items ? items.slice(0, 3) : defaultItems;
+  const displayItems = items ? items.slice(0, 3) : [];
 
   const handleMouseMove = (e) => {
     const newX = e.clientX;
     const newY = e.clientY;
-    setCursorPos({ x: newX, y: newY });
     
     let zoomLeft = newX - 150;
     let zoomTop = newY - 100;
@@ -37,15 +30,17 @@ export default function PicMenu({ isOpen, onClose, items }) {
       const xPct = (e.clientX - rect.left) / rect.width;
       const yPct = (e.clientY - rect.top) / rect.height;
       const zoomFactor = 2;
-      const bgWidth = 551 * zoomFactor;
-      const bgHeight = 855 * zoomFactor;
+      const bgWidth = 555 * zoomFactor;
+      const bgHeight = 770 * zoomFactor;
       const currentImg = displayItems[hoveredIndex];
-      setZoomStyle({
-        backgroundImage: `url(${currentImg})`,
-        backgroundSize: `${bgWidth}px ${bgHeight}px`,
-        backgroundPosition: `${xPct * 100}% ${yPct * 100}%`,
-        backgroundRepeat: "no-repeat",
-      });
+      if (currentImg) {
+        setZoomStyle({
+          backgroundImage: `url(${currentImg})`,
+          backgroundSize: `${bgWidth}px ${bgHeight}px`,
+          backgroundPosition: `${xPct * 100}% ${yPct * 100}%`,
+          backgroundRepeat: "no-repeat",
+        });
+      }
     }
   };
 
@@ -65,20 +60,28 @@ export default function PicMenu({ isOpen, onClose, items }) {
   return (
     <div className="picmenu-overlay" onClick={onClose} onMouseMove={handleMouseMove}>
       <div className="picmenu-content" onClick={(e) => e.stopPropagation()}>
-        <div className="picmenu-cards">
-          {displayItems.map((src, index) => (
-            <div
-              key={index}
-              className="picmenu-card"
-              ref={(el) => (cardRefs.current[index] = el)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <img src={src} alt={`item-${index}`} />
-            </div>
-          ))}
+        <div className="picmenu-main">
+          <div className="picmenu-cards">
+            {displayItems.map((src, index) => (
+              <div
+                key={index}
+                className="picmenu-card"
+                ref={(el) => (cardRefs.current[index] = el)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <img src={src} alt={`item-${index}`} />
+              </div>
+            ))}
+          </div>
         </div>
-        {hoveredIndex !== null && (
+        <div className="picmenu-selector">
+          <ImageSelector 
+            images={selectorImages} 
+            onSelect={onSelectorClick}
+          />
+        </div>
+        {hoveredIndex !== null && displayItems[hoveredIndex] && (
           <div
             className="picmenu-zoom"
             style={{

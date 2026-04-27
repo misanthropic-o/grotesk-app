@@ -5,9 +5,16 @@ import "./itempagehorizontal.css";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import PicMenu from "./PicMenu";
 
+const allItemImages = Array.from({ length: 12 }, (_, i) => `imgs/ROslidertemplatehorizontal.png`);
+
 export default function ItemPageHorizontal() {
   const scrollRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(null);
+  const [displayImages, setDisplayImages] = useState([]);
+
+  useEffect(() => {
+    setDisplayImages(allItemImages.slice(0, 5));
+  }, []);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -26,18 +33,22 @@ export default function ItemPageHorizontal() {
     return () => container.removeEventListener("wheel", onWheel);
   }, []);
 
-  const images = [
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-  ];
+  const handleSelectorClick = (selectorIndex) => {
+    const usedIndices = [0, 1, 2];
+    const replaceIndex = selectorIndex % 3;
+    const newImage = allItemImages[3 + selectorIndex];
+    
+    const newDisplay = [...displayImages];
+    newDisplay[replaceIndex] = newImage;
+    setDisplayImages(newDisplay);
+  };
+
+  const selectorImages = allItemImages.slice(3, 6);
 
   return (
     <div className="horizontal-slider-wrapper">
       <div className="horizontal-slider" ref={scrollRef}>
-        {images.map((src, index) => (
+        {displayImages.map((src, index) => (
           <div key={index} className="horizontal-slide" onClick={() => setSelectedSlide({ src, index })}>
             <img src={src} alt={`item-${index}`} />
           </div>
@@ -45,7 +56,13 @@ export default function ItemPageHorizontal() {
       </div>
       <HorizontalScrollBar scrollRef={scrollRef} />
 
-      <PicMenu isOpen={selectedSlide !== null} onClose={() => setSelectedSlide(null)} items={images} />
+      <PicMenu 
+        isOpen={selectedSlide !== null} 
+        onClose={() => setSelectedSlide(null)} 
+        items={displayImages}
+        selectorImages={selectorImages}
+        onSelectorClick={handleSelectorClick}
+      />
     </div>
   );
 }

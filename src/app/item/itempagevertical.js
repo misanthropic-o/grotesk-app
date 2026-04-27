@@ -5,9 +5,16 @@ import "./itempagevertical.css";
 import VerticalScrollBar from "./VerticalScrollBar";
 import PicMenu from "./PicMenu";
 
+const allItemImages = Array.from({ length: 12 }, (_, i) => `imgs/ROslidertemplatehorizontal.png`);
+
 export default function ItemPageVertical() {
   const scrollRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(null);
+  const [displayImages, setDisplayImages] = useState([]);
+
+  useEffect(() => {
+    setDisplayImages(allItemImages.slice(0, 5));
+  }, []);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -26,20 +33,20 @@ export default function ItemPageVertical() {
     return () => container.removeEventListener("wheel", onWheel);
   }, []);
 
-  const images = [
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-    "imgs/ROslidertemplatehorizontal.png",
-  ];
+  const handleSelectorClick = (selectorIndex) => {
+    const newDisplay = [...displayImages];
+    newDisplay[selectorIndex % 3] = allItemImages[3 + selectorIndex];
+    setDisplayImages(newDisplay);
+  };
+
+  const selectorImages = allItemImages.slice(3, 6);
 
   return (
     <div className="vertical-slider-wrapper">
       <div className="vertical-slider-container">
         <VerticalScrollBar scrollRef={scrollRef} />
         <div className="vertical-slider" ref={scrollRef}>
-          {images.map((src, index) => (
+          {displayImages.map((src, index) => (
             <div key={index} className="vertical-slide" onClick={() => setSelectedSlide({ src, index })}>
               <img src={src} alt={`item-${index}`} />
             </div>
@@ -47,7 +54,13 @@ export default function ItemPageVertical() {
         </div>
       </div>
 
-      <PicMenu isOpen={selectedSlide !== null} onClose={() => setSelectedSlide(null)} items={images} />
+      <PicMenu 
+        isOpen={selectedSlide !== null} 
+        onClose={() => setSelectedSlide(null)} 
+        items={displayImages}
+        selectorImages={selectorImages}
+        onSelectorClick={handleSelectorClick}
+      />
     </div>
   );
 }
