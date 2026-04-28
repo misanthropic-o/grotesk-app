@@ -1,20 +1,20 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import "./itempagevertical.css";
 import VerticalScrollBar from "./VerticalScrollBar";
 import PicMenu from "./PicMenu";
 
-const allItemImages = Array.from({ length: 12 }, (_, i) => `imgs/ROslidertemplatehorizontal.png`);
+const allItemImages = Array.from(
+  { length: 12 },
+  (_, i) => `/imgs/ROslidertemplatehorizontal.png`,
+);
 
 export default function ItemPageVertical() {
   const scrollRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(null);
-  const [displayImages, setDisplayImages] = useState([]);
-
-  useEffect(() => {
-    setDisplayImages(allItemImages.slice(0, 5));
-  }, []);
+  const [displayImages, setDisplayImages] = useState(allItemImages.slice(0, 5));
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -47,16 +47,26 @@ export default function ItemPageVertical() {
         <VerticalScrollBar scrollRef={scrollRef} />
         <div className="vertical-slider" ref={scrollRef}>
           {displayImages.map((src, index) => (
-            <div key={index} className="vertical-slide" onClick={() => setSelectedSlide({ src, index })}>
-              <img src={src} alt={`item-${index}`} />
+            <div
+              key={index}
+              className="vertical-slide"
+              onClick={() => setSelectedSlide({ src, index })}
+            >
+              <Image
+                src={src}
+                alt={`item-${index}`}
+                fill
+                className="vertical-slide-image"
+                sizes="100vw"
+              />
             </div>
           ))}
         </div>
       </div>
 
-      <PicMenu 
-        isOpen={selectedSlide !== null} 
-        onClose={() => setSelectedSlide(null)} 
+      <PicMenu
+        isOpen={selectedSlide !== null}
+        onClose={() => setSelectedSlide(null)}
         items={displayImages}
         selectorImages={selectorImages}
         onSelectorClick={handleSelectorClick}

@@ -1,20 +1,20 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import "./itempagehorizontal.css";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import PicMenu from "./PicMenu";
 
-const allItemImages = Array.from({ length: 12 }, (_, i) => `imgs/ROslidertemplatehorizontal.png`);
+const allItemImages = Array.from(
+  { length: 12 },
+  (_, i) => `/imgs/ROslidertemplatehorizontal.png`,
+);
 
 export default function ItemPageHorizontal() {
   const scrollRef = useRef(null);
   const [selectedSlide, setSelectedSlide] = useState(null);
-  const [displayImages, setDisplayImages] = useState([]);
-
-  useEffect(() => {
-    setDisplayImages(allItemImages.slice(0, 5));
-  }, []);
+  const [displayImages, setDisplayImages] = useState(allItemImages.slice(0, 5));
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -37,7 +37,7 @@ export default function ItemPageHorizontal() {
     const usedIndices = [0, 1, 2];
     const replaceIndex = selectorIndex % 3;
     const newImage = allItemImages[3 + selectorIndex];
-    
+
     const newDisplay = [...displayImages];
     newDisplay[replaceIndex] = newImage;
     setDisplayImages(newDisplay);
@@ -49,16 +49,26 @@ export default function ItemPageHorizontal() {
     <div className="horizontal-slider-wrapper">
       <div className="horizontal-slider" ref={scrollRef}>
         {displayImages.map((src, index) => (
-          <div key={index} className="horizontal-slide" onClick={() => setSelectedSlide({ src, index })}>
-            <img src={src} alt={`item-${index}`} />
+          <div
+            key={index}
+            className="horizontal-slide"
+            onClick={() => setSelectedSlide({ src, index })}
+          >
+            <Image
+              src={src}
+              alt={`item-${index}`}
+              fill
+              className="horizontal-slide-image"
+              sizes="(max-width: 768px) 100vw, 640px"
+            />
           </div>
         ))}
       </div>
       <HorizontalScrollBar scrollRef={scrollRef} />
 
-      <PicMenu 
-        isOpen={selectedSlide !== null} 
-        onClose={() => setSelectedSlide(null)} 
+      <PicMenu
+        isOpen={selectedSlide !== null}
+        onClose={() => setSelectedSlide(null)}
         items={displayImages}
         selectorImages={selectorImages}
         onSelectorClick={handleSelectorClick}

@@ -28,7 +28,13 @@ export default function Header() {
       >
         <nav>
           <a className="grotesk-header-logo">
-            <Image src={logoImg} width={71} height={19} alt="logo" />
+            <Image
+              src={logoImg}
+              width={71}
+              height={19}
+              alt="logo"
+              loading="eager"
+            />
           </a>
           <div className="header-left">
             <div className="nav1left">

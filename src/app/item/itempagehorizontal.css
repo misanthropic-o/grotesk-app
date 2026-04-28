@@ -22,15 +22,14 @@
 }
 
 .horizontal-slide {
+  position: relative;
   flex-shrink: 0;
   width: 640px;
   height: 100vh;
   border: 1px solid #101010;
 }
 
-.horizontal-slide img {
-  width: 100%;
-  height: 100%;
+.horizontal-slide-image {
   object-fit: cover;
 }
 

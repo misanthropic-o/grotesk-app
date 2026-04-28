@@ -41,6 +41,13 @@
   justify-content: space-between;
 }
 
+.item-card-link-area {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: flex-start;
+}
+
 .item-card-item-price {
   font-weight: 200;
   font-size: 20px;

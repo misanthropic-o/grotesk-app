@@ -30,6 +30,7 @@
 }
 
 .vertical-slide {
+  position: relative;
   flex-shrink: 0;
   width: 100%;
   height: 250px;
@@ -37,9 +38,7 @@
   border: 1px solid #101010;
 }
 
-.vertical-slide img {
-  width: 100%;
-  height: 100%;
+.vertical-slide-image {
   object-fit: cover;
 }
 

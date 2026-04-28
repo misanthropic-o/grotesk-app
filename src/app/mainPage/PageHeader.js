@@ -26,7 +26,13 @@ export default function PageHeader() {
     <header className={`page-header ${isSticky ? "sticky" : ""}`}>
       <nav className="page-header-nav">
         <a className="page-header-logo">
-          <Image src={logoImg} width={71} height={19} alt="logo" />
+          <Image
+            src={logoImg}
+            width={71}
+            height={19}
+            alt="logo"
+            loading="eager"
+          />
         </a>
         <div className="page-header-left">
           <div className="page-header-nav-left">
@@ -56,7 +62,9 @@ export default function PageHeader() {
               <div
                 className="page-header-btn"
                 onClick={() => {
-                  setActiveBtn(activeBtn === "womenswear" ? null : "womenswear");
+                  setActiveBtn(
+                    activeBtn === "womenswear" ? null : "womenswear",
+                  );
                   setMenuOpen(!menuOpen);
                 }}
               >
@@ -108,8 +116,12 @@ export default function PageHeader() {
             <a href="https://github.com/misanthropicinc">GITHUB</a>
           </div>
           <span className="page-header-border"></span>
-          <div className={`page-header-nav-btns ${searchOpen ? "search-active" : ""}`}>
-            <div className={`page-header-search-wrapper ${searchOpen ? "open" : ""}`}>
+          <div
+            className={`page-header-nav-btns ${searchOpen ? "search-active" : ""}`}
+          >
+            <div
+              className={`page-header-search-wrapper ${searchOpen ? "open" : ""}`}
+            >
               <a
                 className="page-header-search-trigger"
                 onClick={() => setSearchOpen(!searchOpen)}
