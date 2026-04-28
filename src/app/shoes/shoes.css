@@ -1,0 +1,16 @@
+.shoes-page-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.shoes-page-content {
+  width: 100%;
+  height: calc(100vh - 71px);
+}
+
+.shoe-viewer-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
