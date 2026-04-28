@@ -25,10 +25,11 @@ export default function ItemPageVertical() {
   const [displayImages, setDisplayImages] = useState(allItemImages.slice(0, 5));
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [zoomedIndex, setZoomedIndex] = useState(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [zoomPos, setZoomPos] = useState({ left: 0, top: 0 });
+  const cursorPosRef = useRef({ x: 0, y: 0 });
   const [zoomStyle, setZoomStyle] = useState({});
   const slideRefs = useRef([]);
+  const zoomRef = useRef(null);
+  const zoomTextRef = useRef(null);
 
   useEffect(() => {
     const container = scrollRef.current;
@@ -48,7 +49,12 @@ export default function ItemPageVertical() {
   }, []);
 
   const handleMouseMove = (e, index) => {
-    setCursorPos({ x: e.clientX, y: e.clientY });
+    cursorPosRef.current = { x: e.clientX, y: e.clientY };
+    
+    if (zoomTextRef.current && hoveredIndex === index) {
+      zoomTextRef.current.style.left = `${e.clientX + 10}px`;
+      zoomTextRef.current.style.top = `${e.clientY + 10}px`;
+    }
     
     if (zoomedIndex === index && slideRefs.current[index]) {
       const rect = slideRefs.current[index].getBoundingClientRect();
@@ -58,7 +64,11 @@ export default function ItemPageVertical() {
       const bgWidth = rect.width * zoomFactor;
       const bgHeight = rect.height * zoomFactor;
       
-      setZoomPos({ left: e.clientX + 15, top: e.clientY + 15 });
+      if (zoomRef.current) {
+        zoomRef.current.style.left = `${e.clientX + 15}px`;
+        zoomRef.current.style.top = `${e.clientY + 15}px`;
+      }
+      
       setZoomStyle({
         backgroundImage: `url(${displayImages[index]})`,
         backgroundSize: `${bgWidth}px ${bgHeight}px`,
@@ -98,33 +108,35 @@ export default function ItemPageVertical() {
                 className="vertical-slide-image"
                 sizes="100vw"
               />
-              {hoveredIndex === index && (
-                <div
-                  style={{
-                    position: "fixed",
-                    left: cursorPos.x + 10,
-                    top: cursorPos.y + 10,
-                    pointerEvents: "none",
-                    zIndex: 10000,
-                    background: "rgba(0,0,0,0.7)",
-                    color: "white",
-                    padding: "2px 6px",
-                    fontSize: "12px",
-                  }}
-                >
-                  ZOOM
-                </div>
-              )}
             </div>
           ))}
         </div>
       </div>
+      {hoveredIndex !== null && (
+        <div
+          ref={zoomTextRef}
+          style={{
+            position: "fixed",
+            left: `${cursorPosRef.current.x + 10}px`,
+            top: `${cursorPosRef.current.y + 10}px`,
+            pointerEvents: "none",
+            zIndex: 10000,
+            background: "rgba(0,0,0,0.7)",
+            color: "white",
+            padding: "2px 6px",
+            fontSize: "12px",
+          }}
+        >
+          ZOOM
+        </div>
+      )}
       {zoomedIndex !== null && (
         <div
+          ref={zoomRef}
           className="slider-zoom"
           style={{
-            left: zoomPos.left,
-            top: zoomPos.top,
+            left: `${cursorPosRef.current.x + 15}px`,
+            top: `${cursorPosRef.current.y + 15}px`,
             ...zoomStyle,
           }}
         />

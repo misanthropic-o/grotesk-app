@@ -25,7 +25,7 @@ export default function PageHeader() {
   return (
     <header className={`page-header ${isSticky ? "sticky" : ""}`}>
       <nav className="page-header-nav">
-        <a className="page-header-logo">
+        <a href="/home" className="page-header-logo">
           <Image
             src={logoImg}
             width={71}

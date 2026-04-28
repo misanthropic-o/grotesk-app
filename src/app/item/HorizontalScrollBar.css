@@ -3,6 +3,7 @@
   height: 9px;
   background-color: #101010;
   position: relative;
+  margin: 0 auto;
 }
 
 .horizontal-scrollbar-thumb {
@@ -10,4 +11,31 @@
   height: 5px;
   background-color: white;
   top: 2px;
+}
+
+.horizontal-scrollbar-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: 579px;
+  pointer-events: none;
+}
+
+.horizontal-scrollbar-wrapper > * {
+  pointer-events: auto;
+}
+
+.horizontal-scrollbar-wrapper > * {
+  pointer-events: auto;
+}
+
+.horizontal-scrollbar-track {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.horizontal-scrollbar-track:hover {
+  opacity: 1;
 }

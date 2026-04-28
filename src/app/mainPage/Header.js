@@ -27,7 +27,7 @@ export default function Header() {
         style={{ position: "relative", bottom: "auto", top: "auto" }}
       >
         <nav>
-          <a className="grotesk-header-logo">
+          <a href="/home" className="grotesk-header-logo">
             <Image
               src={logoImg}
               width={71}
