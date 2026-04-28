@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import "./ImageSelector.css";
 
 export default function ImageSelector({ images, selectedIndex, onSelect }) {
@@ -12,7 +13,7 @@ export default function ImageSelector({ images, selectedIndex, onSelect }) {
             className="imageselector-group"
             onClick={() => onSelect(index)}
           >
-            <img src={src} alt={`option-${index}`} />
+            <Image src={src} alt={`option-${index}`} width={155} height={177} />
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import "./PicMenu.css";
 import ImageSelector from "./ImageSelector";
 
@@ -16,12 +17,12 @@ export default function PicMenu({ isOpen, onClose, items, selectorImages, onSele
     const newX = e.clientX;
     const newY = e.clientY;
     
-    let zoomLeft = newX - 150;
-    let zoomTop = newY - 100;
+    let zoomLeft = newX + 15;
+    let zoomTop = newY + 15;
     if (zoomLeft < 0) zoomLeft = 0;
     if (zoomTop < 0) zoomTop = 0;
-    if (zoomLeft + 300 > window.innerWidth) zoomLeft = window.innerWidth - 300;
-    if (zoomTop + 200 > window.innerHeight) zoomTop = window.innerHeight - 200;
+    if (zoomLeft + 252 > window.innerWidth) zoomLeft = window.innerWidth - 252;
+    if (zoomTop + 198 > window.innerHeight) zoomTop = window.innerHeight - 198;
     setZoomPos({ left: zoomLeft, top: zoomTop });
     
     if (hoveredIndex !== null && cardRefs.current[hoveredIndex]) {
@@ -30,8 +31,8 @@ export default function PicMenu({ isOpen, onClose, items, selectorImages, onSele
       const xPct = (e.clientX - rect.left) / rect.width;
       const yPct = (e.clientY - rect.top) / rect.height;
       const zoomFactor = 2;
-      const bgWidth = 555 * zoomFactor;
-      const bgHeight = 770 * zoomFactor;
+      const bgWidth = rect.width * zoomFactor;
+      const bgHeight = (rect.height + 65) * zoomFactor;
       const currentImg = displayItems[hoveredIndex];
       if (currentImg) {
         setZoomStyle({
@@ -57,7 +58,7 @@ export default function PicMenu({ isOpen, onClose, items, selectorImages, onSele
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div className="picmenu-overlay" onClick={onClose} onMouseMove={handleMouseMove}>
       <div className="picmenu-content" onClick={(e) => e.stopPropagation()}>
         <div className="picmenu-main">
@@ -81,17 +82,18 @@ export default function PicMenu({ isOpen, onClose, items, selectorImages, onSele
             onSelect={onSelectorClick}
           />
         </div>
-        {hoveredIndex !== null && displayItems[hoveredIndex] && (
-          <div
-            className="picmenu-zoom"
-            style={{
-              left: zoomPos.left,
-              top: zoomPos.top,
-              ...zoomStyle,
-            }}
-          />
-        )}
       </div>
-    </div>
+      {hoveredIndex !== null && displayItems[hoveredIndex] && (
+        <div
+          className="picmenu-zoom"
+          style={{
+            left: zoomPos.left,
+            top: zoomPos.top,
+            ...zoomStyle,
+          }}
+        />
+      )}
+    </div>,
+    document.body
   );
 }

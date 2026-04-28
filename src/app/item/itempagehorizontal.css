@@ -38,3 +38,12 @@
   height: 100%;
   object-fit: cover;
 }
+
+.slider-zoom {
+  position: fixed;
+  width: 252px;
+  height: 198px;
+  pointer-events: none;
+  z-index: 10001;
+  background-color: white;
+}

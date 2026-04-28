@@ -1,14 +1,13 @@
 .picmenu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 99999;
   opacity: 0;
   animation: fadeIn 0.03s steps(1) forwards;
 }
@@ -20,8 +19,8 @@
 }
 
 .picmenu-content {
-  width: 1664px;
-  height: 770px;
+  width: 1398px;
+  height: 712px;
   background: white;
   display: flex;
   flex-direction: column;
@@ -53,7 +52,7 @@
 
 .picmenu-card {
   height: 100%;
-  width: 555px;
+  width: 466px;
   flex-shrink: 0;
 }
 
@@ -70,19 +69,22 @@
 
 .picmenu-zoom {
   position: fixed;
-  width: 300px;
-  height: 200px;
+  width: 252px;
+  height: 198px;
   pointer-events: none;
   z-index: 1001;
   background-color: white;
 }
 
 .picmenu-selector {
-  height: 143px;
-  min-height: 143px;
+  height: 180px;
+  min-height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: white;
   border-top: 1px solid #ccc;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: -8rem;
 }
