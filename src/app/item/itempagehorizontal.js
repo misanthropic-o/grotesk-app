@@ -88,7 +88,13 @@ export default function ItemPageHorizontal() {
   };
 
   return (
-    <div className="horizontal-slider-wrapper">
+    <div 
+      className="horizontal-slider-wrapper"
+      onMouseLeave={() => {
+        setZoomedIndex(null);
+        setHoveredIndex(null);
+      }}
+    >
       <div className="horizontal-slider" ref={scrollRef}>
         {displayImages.map((src, index) => (
           <div

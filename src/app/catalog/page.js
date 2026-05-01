@@ -50,7 +50,7 @@ function FilterInput({ placeholder, list, value, onChange }) {
       />
       {isFocused && filtered.length > 0 && (
         <div className="filter-dropdown">
-          {filtered.slice(0, 5).map((item) => (
+          {filtered.map((item) => (
             <div
               key={item}
               className="filter-dropdown-item"
@@ -137,15 +137,38 @@ export default function Catalog() {
             list={garmentTypes}
             onChange={(e) => setGarmentType(e.target.value)}
           />
-          <input className="filter-input" placeholder="BRAND" />
+          <FilterInput placeholder="BRAND" list={[]} />
           <FilterInput placeholder="GENDER" list={genders} />
           <FilterInput placeholder="CONDITION" list={conditions} />
+          <div style={{ marginBottom: "30px" }} />
+          <div style={{ fontSize: "18px", marginBottom: "10px", marginTop: "20px" }}>PRICE RANGE</div>
+          <div style={{ display: "flex", gap: "2rem", marginBottom: "15px" }}>
+            <input 
+              className="filter-input" 
+              placeholder="PRICE FROM" 
+              style={{ width: "50%", background: "none", cursor: "text" }} 
+            />
+            <input 
+              className="filter-input" 
+              placeholder="PRICE TO" 
+              style={{ width: "50%", background: "none", cursor: "text" }} 
+            />
+          </div>
           <button onClick={() => setIsFilterOpen(false)}>CLOSE</button>
         </div>
       </div>
 
       <div style={{ position: "relative", zIndex: isFilterOpen ? 1 : "auto" }}>
         <div className="catalog-grid-container">
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
+          <ItemCard />
           <ItemCard />
         </div>
       </div>
