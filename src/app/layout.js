@@ -15,7 +15,12 @@ export default function RootLayout({ children }) {
       <head>
         <title>GROTESK | OFFICIAL WEBSITE</title>
       </head>
-      <body className={gotham.variable}>{children}<Footer /></body>
+      <body className={gotham.variable}>
+        {children}
+        <div style={{ position: "relative", zIndex: 1000 }}>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

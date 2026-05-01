@@ -9,8 +9,10 @@ const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 function CameraUpdater({ cameraPosition }) {
   const { camera } = useThree();
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     camera.position.set(cameraPosition.x, cameraPosition.y, cameraPosition.z);
     if (camera.isPerspectiveCamera) {
+      // eslint-disable-next-line react-hooks/immutability
       camera.fov = cameraPosition.fov;
       camera.updateProjectionMatrix();
     }
@@ -233,24 +235,24 @@ export default function ShoeViewer() {
         })}
       </div>
 
-       <Canvas
-         camera={{
-           position: [cameraPosition.x, cameraPosition.y, cameraPosition.z],
-           fov: cameraPosition.fov,
-           near: 0.1,
-           far: 100,
-         }}
-         style={{ width: "100%", height: "100%", display: "block" }}
-         shadows
-         events={null}
-         gl={{
-           antialias: true,
-           toneMapping: THREE.ACESFilmicToneMapping,
-           toneMappingExposure: 1.2,
-         }}
-       >
-         <CameraUpdater cameraPosition={cameraPosition} />
-         <ambientLight intensity={0.4} />
+      <Canvas
+        camera={{
+          position: [cameraPosition.x, cameraPosition.y, cameraPosition.z],
+          fov: cameraPosition.fov,
+          near: 0.1,
+          far: 100,
+        }}
+        style={{ width: "100%", height: "100%", display: "block" }}
+        shadows={{ type: THREE.PCFShadowMap }}
+        events={null}
+        gl={{
+          antialias: true,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.2,
+        }}
+      >
+        <CameraUpdater cameraPosition={cameraPosition} />
+        <ambientLight intensity={0.4} />
         <directionalLight
           castShadow
           position={[5, 8, 5]}

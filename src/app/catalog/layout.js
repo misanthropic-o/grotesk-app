@@ -4,8 +4,10 @@ import Breadcrumbs from "../breadcrumbs";
 export default function CatalogLayout({ children }) {
   return (
     <>
-      <PageHeader />
-      <Breadcrumbs />
+      <div style={{ position: "relative", zIndex: 1000 }} className="catalog-top-section">
+        <PageHeader />
+        <Breadcrumbs />
+      </div>
       {children}
     </>
   );

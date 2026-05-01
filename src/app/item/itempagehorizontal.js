@@ -57,7 +57,7 @@ export default function ItemPageHorizontal() {
       zoomTextRef.current.style.top = `${nextPos.y + 10}px`;
     }
 
-    if (zoomedIndex === index && slideRefs.current[index]) {
+    if (zoomedIndex !== null && slideRefs.current[index]) {
       const rect = slideRefs.current[index].getBoundingClientRect();
       const xPct = (e.clientX - rect.left) / rect.width;
       const yPct = (e.clientY - rect.top) / rect.height;
