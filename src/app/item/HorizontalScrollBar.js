@@ -31,16 +31,17 @@ export default function HorizontalScrollBar({ scrollRef }) {
   const translateX = maxTranslate * scrollRatio;
 
   return (
-    <div className="horizontal-scrollbar-wrapper">
-      <div className="horizontal-scrollbar-track" style={{ width: trackWidth, height: 9 }}>
-        <div
-          className="horizontal-scrollbar-thumb"
-          style={{
-            width: thumbWidth,
-            transform: `translateX(${translateX}px)`,
-          }}
-        ></div>
-      </div>
+    <div
+      className="horizontal-scrollbar-track"
+      style={{ width: 578, height: 9 }}
+    >
+      <div
+        className="horizontal-scrollbar-thumb"
+        style={{
+          width: thumbWidth,
+          transform: `translateX(${translateX}px)`,
+        }}
+      ></div>
     </div>
   );
 }

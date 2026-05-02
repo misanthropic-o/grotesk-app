@@ -4,6 +4,8 @@ import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import "./itempagehorizontal.css";
 import HorizontalScrollBar from "./HorizontalScrollBar";
+import ItemMenu from "./ItemMenu";
+import BuyMenuItemMenu from "./buymenuitemmenu";
 
 const allItemImages = [
   "/imgs/presetitemimg1.webp",
@@ -90,19 +92,22 @@ export default function ItemPageHorizontal() {
   return (
     <div 
       className="horizontal-slider-wrapper"
-      onMouseLeave={() => {
-        setZoomedIndex(null);
-        setHoveredIndex(null);
-      }}
     >
-      <div className="horizontal-slider" ref={scrollRef}>
+      <ItemMenu />
+      <HorizontalScrollBar scrollRef={scrollRef} />
+      <BuyMenuItemMenu />
+      <div className="horizontal-slider" ref={scrollRef}
+        onMouseLeave={() => {
+          setZoomedIndex(null);
+          setHoveredIndex(null);
+        }}
+      >
         {displayImages.map((src, index) => (
           <div
             key={index}
             className="horizontal-slide"
             ref={(el) => (slideRefs.current[index] = el)}
             onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
             onMouseMove={(e) => handleMouseMove(e, index)}
             onClick={() => handleClick(index)}
           >
@@ -116,7 +121,6 @@ export default function ItemPageHorizontal() {
           </div>
         ))}
       </div>
-      <HorizontalScrollBar scrollRef={scrollRef} />
       {hoveredIndex !== null && (
         <div
           ref={zoomTextRef}

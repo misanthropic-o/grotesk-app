@@ -77,24 +77,46 @@ export default function Catalog() {
 
   useEffect(() => {
     const update = () => {
-      const topSection = document.querySelector(".catalog-top-section");
-      const searchSection = document.querySelector(".catalog-seciton")?.parentElement;
-      const footer = document.querySelector("footer");
+      const header = document.querySelector(".catalog-top-section");
+      const searchSection = document.querySelector(".catalog-seciton");
       
       let top = 0;
-      if (topSection) top += topSection.getBoundingClientRect().height;
+      if (header) top += header.getBoundingClientRect().height;
       if (searchSection) top += searchSection.getBoundingClientRect().height;
-      
-      const footerHeight = footer?.getBoundingClientRect().height || 0;
       
       setMenuStyle({
         top,
-        height: `calc(100vh - ${top}px - ${footerHeight}px)`,
+        height: `calc(100vh - ${top}px)`,
       });
     };
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
+  }, [isFilterOpen]);
+
+  useEffect(() => {
+    if (isFilterOpen) {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollTop}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    } else {
+      const scrollTop = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollTop) {
+        window.scrollTo(0, -parseInt(scrollTop));
+      }
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+    };
   }, [isFilterOpen]);
 
   const isShoes = garmentType.toLowerCase().includes("shoe");
@@ -154,7 +176,6 @@ export default function Catalog() {
               style={{ width: "50%", background: "none", cursor: "text" }} 
             />
           </div>
-          <button onClick={() => setIsFilterOpen(false)}>CLOSE</button>
         </div>
       </div>
 
