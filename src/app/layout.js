@@ -1,6 +1,7 @@
 import { gotham } from "@/fonts/gotham";
 import "./globals.css";
 import Footer from "./footer";
+import HotkeyListener from "./HotkeyListener";
 
 const metadata = {
   title: "GROTESK | OFFICIAL WEBSITE",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         <title>GROTESK | OFFICIAL WEBSITE</title>
       </head>
       <body className={gotham.variable}>
+        <HotkeyListener />
         {children}
         <div style={{ position: "relative", zIndex: 1000 }}>
           <Footer />

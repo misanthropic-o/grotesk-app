@@ -11,7 +11,7 @@ export default function BuyMenuItemMenu() {
           <p className="price-ipage">$600.00</p>
         </div>
         <div className="size-div-ipage">
-          <p classsName="size-title-ipage">SIZE</p>
+          <p className="size-title-ipage">SIZE</p>
         </div>
         <div className=""></div>
       </div>
